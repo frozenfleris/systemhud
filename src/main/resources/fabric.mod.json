@@ -3,13 +3,13 @@
 	"id": "syshud",
 	"version": "${version}",
 	"name": "SystemHUD",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Show system date and time, java version, OS and Minecraft Client Version",
 	"authors": [
-		"Me!"
+		"SoultwistRune"
 	],
 	"contact": {
 		"homepage": "",
-		"sources": ""
+		"sources": "https://github.com/frozenfleris/systemhud"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/syshud/icon.png",
@@ -24,6 +24,9 @@
 	},
 	"mixins": [
 	],
+	"recommends": {
+		"java": ">=20"
+	},
 	"depends": {
 		"fabricloader": ">=0.14.21",
 		"minecraft": "~1.20.1",

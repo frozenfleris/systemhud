@@ -11,7 +11,7 @@
 		"homepage": "",
 		"sources": "https://github.com/frozenfleris/systemhud"
 	},
-	"license": "ARR",
+	"license": "MIT",
 	"icon": "assets/syshud/icon.png",
 	"environment": "client",
 	"entrypoints": {

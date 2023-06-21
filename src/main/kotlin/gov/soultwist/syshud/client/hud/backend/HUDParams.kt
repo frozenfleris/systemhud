@@ -1,4 +1,4 @@
-package gov.soultwist.syshud.client.hud
+package gov.soultwist.syshud.client.hud.backend
 
 import gov.soultwist.syshud.util.ModConfig
 import gov.soultwist.syshud.util.TranslatorHelper

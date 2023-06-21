@@ -20,6 +20,12 @@
 				"value": "gov.soultwist.syshud.SyshudMain",
 				"adapter": "kotlin"
 			}
+		],
+		"modmenu": [
+			{
+				"value": "gov.soultwist.syshud.api.MenuEvent",
+				"adapter": "kotlin"
+			}
 		]
 	},
 	"mixins": [

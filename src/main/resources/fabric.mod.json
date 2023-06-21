@@ -11,7 +11,7 @@
 		"homepage": "",
 		"sources": "https://github.com/frozenfleris/systemhud"
 	},
-	"license": "CC0-1.0",
+	"license": "ARR",
 	"icon": "assets/syshud/icon.png",
 	"environment": "client",
 	"entrypoints": {
@@ -32,6 +32,8 @@
 		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*",
+		"modmenu": ">=7.1.0",
+		"cloth-config": ">=11.0.99",
 		"fabric-language-kotlin": ">=1.8.22"
 	},
 	"suggests": {

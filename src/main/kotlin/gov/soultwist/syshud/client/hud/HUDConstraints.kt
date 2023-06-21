@@ -1,5 +1,6 @@
 package gov.soultwist.syshud.client.hud
 
+import gov.soultwist.syshud.util.ModConfig
 import net.minecraft.client.MinecraftClient
 
 interface HUDConstraints {
@@ -19,15 +20,15 @@ interface HUDConstraints {
              * Sets the text element at the top of the screen
              * @return assigned parameter (defaults to 2)
              */
-                fun top(top: Int = 2) : Int {
-                    return top
+                fun top() : Int {
+                    return ModConfig.HUD_HSTACK_PADDING.value()
                 }
             /**
              * Sets the text element at the bottom of the screen
              * @return scaled height - font height of textRenderer minus bottom (Int: defaults to 2)
             */
-                fun bottom(bottom: Int = 2) : Int {
-                    return client.window.scaledHeight - client.textRenderer.fontHeight - 2
+                fun bottom() : Int {
+                    return client.window.scaledHeight - client.textRenderer.fontHeight - ModConfig.HUD_HSTACK_PADDING.value()
                 }
             }
         }
@@ -46,15 +47,15 @@ interface HUDConstraints {
              * Sets the text element at the left edge of the screen
              * @return assigned parameter (defaults to 2)
              */
-            fun leading(leading: Int = 2): Int {
-                return leading
+            fun leading(): Int {
+                return ModConfig.HUD_VSTACK_PADDING.value()
             }
             /**
              * Sets the text element at the right edge of the screen
              * @return scaled width - width of text input minus trailing (Int, defaults to 2)
              */
-            fun trailing(text: String, trailing: Int = 2): Int {
-                return client.window.scaledWidth - client.textRenderer.getWidth(text) - trailing
+            fun trailing(text: String): Int {
+                return client.window.scaledWidth - client.textRenderer.getWidth(text) - ModConfig.HUD_VSTACK_PADDING.value()
             }
         }
     }

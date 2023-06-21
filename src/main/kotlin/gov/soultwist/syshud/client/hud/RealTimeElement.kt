@@ -6,7 +6,7 @@ import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.util.Colors
 
-object object_45438_d : HudRenderCallback {
+object RealTimeElement : HudRenderCallback {
     override fun onHudRender(drawContext: DrawContext?, tickDelta: Float) {
         val x = 0
         val y = 0
@@ -34,8 +34,8 @@ object object_45438_d : HudRenderCallback {
                     drawContext?.drawText(
                         dualRenderer,
                         dr,
-                        HUDConstraints.hstack.top(),
-                        HUDConstraints.vstack.leading(),
+                        HUDConstraints.hstack.leading(),
+                        HUDConstraints.vstack.top(),
                         Colors.WHITE,
                         ts
 
@@ -46,16 +46,16 @@ object object_45438_d : HudRenderCallback {
                         drawContext?.drawText(
                             dateRenderer,
                             dt,
-                            HUDConstraints.hstack.top(),
-                            HUDConstraints.vstack.leading(),
+                            HUDConstraints.hstack.leading(),
+                            HUDConstraints.vstack.top(),
                             Colors.WHITE,
                             ts
                         )
                         drawContext?.drawText(
                             timeRenderer,
                             ti,
-                            HUDConstraints.hstack.top(),
-                            HUDConstraints.vstack.leading() + i,
+                            HUDConstraints.hstack.leading(),
+                            HUDConstraints.vstack.top() + i,
                             Colors.WHITE,
                             ts
                         )
@@ -66,16 +66,16 @@ object object_45438_d : HudRenderCallback {
                             drawContext?.drawText(
                                 timeRenderer,
                                 ti,
-                                HUDConstraints.hstack.top(),
-                                HUDConstraints.vstack.leading(),
+                                HUDConstraints.hstack.leading(),
+                                HUDConstraints.vstack.top(),
                                 Colors.WHITE,
                                 ts
                             )
                             drawContext?.drawText(
                                 dateRenderer,
                                 dt,
-                                HUDConstraints.hstack.top(),
-                                HUDConstraints.vstack.leading() + i,
+                                HUDConstraints.hstack.leading(),
+                                HUDConstraints.vstack.top() + i,
                                 Colors.WHITE,
                                 ts
                             )

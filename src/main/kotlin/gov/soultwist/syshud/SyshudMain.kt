@@ -1,10 +1,9 @@
 package gov.soultwist.syshud
 
-import gov.soultwist.syshud.client.hud.HUDConstraints
-import gov.soultwist.syshud.client.hud.object_45438_d
+import gov.soultwist.syshud.client.hud.RealTimeElement
+import gov.soultwist.syshud.client.hud.SystemSpecElement
 import gov.soultwist.syshud.util.ModConfig
 import net.fabricmc.api.ClientModInitializer
-import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import org.slf4j.LoggerFactory
 
@@ -18,7 +17,8 @@ object SyshudMain : ClientModInitializer {
 		logger.info("Kotlin Mod SystemHUD (id: syshud) loaded")
 		val hrc = HudRenderCallback.EVENT
 
-		hrc.register(object_45438_d)
+		hrc.register(RealTimeElement)
+		hrc.register(SystemSpecElement)
 		ModConfig.loadFromFile()
 	}
 }

@@ -1,10 +1,7 @@
 package gov.soultwist.syshud.client.hud.backend
 
-import gov.soultwist.syshud.util.ModConfig
 import gov.soultwist.syshud.util.TranslatorHelper
-import java.text.SimpleDateFormat
-import java.time.Instant
-import java.util.*
+import net.minecraft.SharedConstants
 
 interface HUDParams {
     interface getJavaSpecs {
@@ -16,20 +13,14 @@ interface HUDParams {
     }
 
     interface getGameClientSpecs {
-        companion object {  }
+        companion object {
+            val MINECRAFT_VERSION = "Minecraft " + SharedConstants.getGameVersion().name
+        }
     }
 
     interface getSystemSpecs {
         companion object {
             val OS = TranslatorHelper.oscheck() + " " + System.getProperty("os.version")
-        }
-    }
-
-    interface getRealTime {
-        companion object {
-            val DUAL: String = SimpleDateFormat(ModConfig.DATE_AND_TIME_FORMATTING.value()).format(Date.from(Instant.now())).toString()
-            val DATE: String = SimpleDateFormat(ModConfig.DATE_FORMATTING.value()).format(Date.from(Instant.now())).toString()
-            val TIME: String = SimpleDateFormat(ModConfig.TIME_FORMATTING.value()).format(Date.from(Instant.now())).toString()
         }
     }
 }

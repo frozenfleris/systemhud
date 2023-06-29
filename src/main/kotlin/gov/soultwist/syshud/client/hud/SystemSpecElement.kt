@@ -18,11 +18,21 @@ object SystemSpecElement : HudRenderCallback {
         val ts = ModConfig.TEXT_SHADOW.value()
 
         val jVendor = jSpec.VENDOR
-        val jVer = jSpec.VERSION
-        val jVerArch = jSpec.VERSION_ARCH
-        val os = sysSpec.OS
 
-        if(ModConfig.ENABLE_PC_SPECS.value()) {
+        val newJVer = if (ModConfig.SHOW_JRE_ARCHITECTURE.value()) {
+            jSpec.VERSION_ARCH
+        } else {
+            jSpec.VERSION
+        }
+
+
+        val os = if (ModConfig.SHOW_DEVICE_CPU.value()) {
+            sysSpec.OS_WITH_CPU
+        } else {
+            sysSpec.OS
+        }
+
+        if (ModConfig.ENABLE_PC_SPECS.value()) {
             if (!client.options.debugEnabled) {
                 val sysRender = client.textRenderer
                 val i = 9
@@ -35,37 +45,26 @@ object SystemSpecElement : HudRenderCallback {
                     Colors.WHITE,
                     ts
                 )
-                if (ModConfig.HIDE_JRE_ARCHITECTURE.value()) {
-                    drawContext?.drawText(
-                        sysRender,
-                        jVer,
-                        HUDConstraints.hstack.leading(),
-                        HUDConstraints.vstack.bottom() - i,
-                        Colors.WHITE,
-                        ts
-                    )
-                }
-                else {
-                    drawContext?.drawText(
-                        sysRender,
-                        jVerArch,
-                        HUDConstraints.hstack.leading(),
-                        HUDConstraints.vstack.bottom() - i,
-                        Colors.WHITE,
-                        ts
-                    )
 
-                }
-                if (!ModConfig.HIDE_JRE_VENDOR.value()) {
-                    drawContext?.drawText(
-                        sysRender,
-                        jVendor,
-                        HUDConstraints.hstack.leading(),
-                        HUDConstraints.vstack.bottom() - i1,
-                        Colors.WHITE,
-                        ts
-                    )
-                }
+                drawContext?.drawText(
+                    sysRender,
+                    newJVer,
+                    HUDConstraints.hstack.leading(),
+                    HUDConstraints.vstack.bottom() - i,
+                    Colors.WHITE,
+                    ts
+                )
+
+                    if (ModConfig.SHOW_JRE_VENDOR.value()) {
+                        drawContext?.drawText(
+                            sysRender,
+                            jVendor,
+                            HUDConstraints.hstack.leading(),
+                            HUDConstraints.vstack.bottom() - i1,
+                            Colors.WHITE,
+                            ts
+                        )
+                    }
             }
         }
     }

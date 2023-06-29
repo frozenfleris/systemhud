@@ -14,6 +14,8 @@ object VersionElement: HudRenderCallback {
         val mcVers = HUDParams.getGameClientSpecs.MINECRAFT_VERSION
         val versionRenderer = client.textRenderer
         val ts = ModConfig.TEXT_SHADOW.value()
+        val i = versionRenderer.fontHeight
+        val j = drawContext.scaledWindowWidth
 
         if (ModConfig.ENABLE_CLIENT_VERSION.value()) {
             drawContext.drawText(
@@ -24,6 +26,7 @@ object VersionElement: HudRenderCallback {
                 Colors.WHITE,
                 ts
             )
+
         }
     }
 

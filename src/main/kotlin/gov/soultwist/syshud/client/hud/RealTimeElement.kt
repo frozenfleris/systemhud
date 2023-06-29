@@ -12,6 +12,7 @@ import java.util.*
 
 object RealTimeElement : HudRenderCallback {
     override fun onHudRender(drawContext: DrawContext?, tickDelta: Float) {
+
         val x = 0
         val y = 0
 
@@ -20,6 +21,8 @@ object RealTimeElement : HudRenderCallback {
         val dr = SimpleDateFormat(ModConfig.DATE_AND_TIME_FORMATTING.value()).format(Date.from(Instant.now())).toString()
         val dt = SimpleDateFormat(ModConfig.DATE_FORMATTING.value()).format(Date.from(Instant.now())).toString()
         val ti = SimpleDateFormat(ModConfig.TIME_FORMATTING.value()).format(Date.from(Instant.now())).toString()
+
+
 
         val ts = ModConfig.TEXT_SHADOW.value()
 
@@ -46,44 +49,36 @@ object RealTimeElement : HudRenderCallback {
                             ts
 
                         )
-                    } else {
-                        if (!ModConfig.FLIP_DATE_AND_TIME.value()) {
-                            val i = dateRenderer.fontHeight
-                            drawContext?.drawText(
-                                dateRenderer,
-                                dt,
-                                HUDConstraints.hstack.leading(),
-                                HUDConstraints.vstack.top(),
-                                Colors.WHITE,
-                                ts
-                            )
-                            drawContext?.drawText(
-                                timeRenderer,
-                                ti,
-                                HUDConstraints.hstack.leading(),
-                                HUDConstraints.vstack.top() + i,
-                                Colors.WHITE,
-                                ts
-                            )
-                        } else {
+                    }
+                    else
+                    {
 
-                            val i = timeRenderer.fontHeight
-                            drawContext?.drawText(
-                                timeRenderer,
-                                ti,
-                                HUDConstraints.hstack.leading(),
-                                HUDConstraints.vstack.top(),
-                                Colors.WHITE,
-                                ts
-                            )
+                            val i = dateRenderer.fontHeight
+                            val n = timeRenderer.fontHeight
                             drawContext?.drawText(
                                 dateRenderer,
                                 dt,
                                 HUDConstraints.hstack.leading(),
-                                HUDConstraints.vstack.top() + i,
+                                if (ModConfig.FLIP_DATE_AND_TIME.value()){
+                                    HUDConstraints.vstack.top() + n
+                                } else { HUDConstraints.vstack.top() },
                                 Colors.WHITE,
                                 ts
                             )
+                            drawContext?.drawText(
+                                timeRenderer,
+                                ti,
+                                HUDConstraints.hstack.leading(),
+                                if (ModConfig.FLIP_DATE_AND_TIME.value()) { HUDConstraints.vstack.top() }
+                                else {
+                                    HUDConstraints.vstack.top() + i
+                                     },
+
+                                Colors.WHITE,
+                                ts
+                            )
+
+
 
                         }
                     }
@@ -91,4 +86,4 @@ object RealTimeElement : HudRenderCallback {
             }
         }
 
-    }
+

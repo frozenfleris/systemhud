@@ -1,10 +1,14 @@
 package gov.soultwist.syshud.client.screen
 
+import gov.soultwist.syshud.client.hud.backend.ConfigLiteral
 import gov.soultwist.syshud.util.ModConfig
 import me.shedaniel.clothconfig2.api.ConfigBuilder
 import me.shedaniel.clothconfig2.api.ConfigCategory
+import me.shedaniel.clothconfig2.gui.entries.DropdownBoxEntry
+import me.shedaniel.clothconfig2.impl.builders.DropdownMenuBuilder
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.text.Text
+import net.minecraft.util.Colors
 
 object ModConfigScreen {
     fun getConfigScreen(parent: Screen?): ConfigBuilder {
@@ -19,21 +23,25 @@ object ModConfigScreen {
         //Catagories
         val general = builder.getOrCreateCategory(Text.translatable("syshud.config_title"))
         val customization = builder.getOrCreateCategory(Text.translatable("syshud.advanced_hud_title"))
+        val experimental = builder.getOrCreateCategory(Text.translatable(
+            "syshud.experimental_config_title"
+        ))
 
         //Entries by Category
         //General
         addBooleanEntry(general, builder, ModConfig.ENABLE_SYSTEM_TIME)
         addBooleanEntry(general, builder, ModConfig.ENABLE_CLIENT_VERSION)
         addBooleanEntry(general, builder, ModConfig.ENABLE_PC_SPECS)
-        addBooleanEntry(general, builder, ModConfig.HIDE_JRE_ARCHITECTURE)
-        addBooleanEntry(general, builder, ModConfig.HIDE_JRE_VENDOR)
+        addBooleanEntry(general, builder, ModConfig.SHOW_JRE_ARCHITECTURE)
+        addBooleanEntry(general, builder, ModConfig.SHOW_JRE_VENDOR)
+        addBooleanEntry(general, builder, ModConfig.SHOW_DEVICE_CPU)
 
         //Advanced HUD Settings
         addBooleanEntry(customization, builder, ModConfig.ENABLE_MULTILINE)
         if (!ModConfig.ENABLE_MULTILINE.value()) {
-            addStringEntry(customization, builder, ModConfig.DATE_AND_TIME_FORMATTING)
+            dateAndTimeEntry(customization, builder, ModConfig.DATE_AND_TIME_FORMATTING)
         } else {
-            addStringEntry(customization, builder, ModConfig.DATE_FORMATTING)
+            dateAndTimeEntry(customization, builder, ModConfig.DATE_FORMATTING)
             addStringEntry(customization, builder, ModConfig.TIME_FORMATTING)
             addBooleanEntry(customization, builder, ModConfig.FLIP_DATE_AND_TIME)
         }
@@ -90,4 +98,22 @@ object ModConfigScreen {
                 .build()
         )
     }
+
+
+    //Setting-specific entries
+
+    private fun dateAndTimeEntry(
+        category: ConfigCategory, builder: ConfigBuilder,
+        value: ModConfig.Value<String>
+    ) {
+        category.addEntry(
+            builder.entryBuilder()
+                .startStrField(Text.translatable("syshud.configs." + value.name() + ".label"), value.value())
+                .setDefaultValue(value.defaultValue())
+                .setTooltip(Text.literal(ConfigLiteral.Tooltips.date_format_warn))
+                .setSaveConsumer(value::setValue)
+                .build()
+        )
+    }
+
 }

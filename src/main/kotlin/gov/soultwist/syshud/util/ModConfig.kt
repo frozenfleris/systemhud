@@ -16,8 +16,8 @@ object ModConfig {
     val ENABLE_SYSTEM_TIME = Value("enable_irl_time", true)
     val ENABLE_CLIENT_VERSION = Value("show_version", true)
     val ENABLE_PC_SPECS = Value("enable_pc_specs", true)
-    val HIDE_JRE_ARCHITECTURE = Value("hide_jre_arch", false)
-    val HIDE_JRE_VENDOR = Value("hide_jre_vendor", false)
+    val SHOW_JRE_ARCHITECTURE = Value("show_jre_arch", false)
+    val SHOW_JRE_VENDOR = Value("show_jre_vendor", false)
     val ENABLE_MULTILINE = Value("enable_multiline", true)
     val FLIP_DATE_AND_TIME = Value("flip_date_and_time", false)
     val DATE_AND_TIME_FORMATTING = Value("date_and_time_formatting", "yyyy-MM-dd hh:mm a")
@@ -26,6 +26,8 @@ object ModConfig {
     val HUD_HSTACK_PADDING = Value("time_horizontal_padding", 2)
     val HUD_VSTACK_PADDING = Value("time_vertical_padding", 2)
     val TEXT_SHADOW = Value("text_shadow", true)
+    val SHOW_DEVICE_CPU = Value("show_device_cpu", false)
+    val TEXT_COLOR = Value("text_color", -1) //-1873784752
     fun loadFromFile() {
         val configFile: File = File(KFileUtils.configDirectory, "config.json")
         try {
@@ -48,11 +50,11 @@ object ModConfig {
                         ENABLE_PC_SPECS.read(
                             root["enable_pc_specs"]
                         ) { obj: JsonElement -> obj.asBoolean }
-                        HIDE_JRE_ARCHITECTURE.read(
-                            root["hide_jre_arch"]
+                        SHOW_JRE_ARCHITECTURE.read(
+                            root["SHOW_jre_arch"]
                         ) { obj: JsonElement -> obj.asBoolean }
-                        HIDE_JRE_VENDOR.read(
-                            root["hide_jre_vendor"]
+                        SHOW_JRE_VENDOR.read(
+                            root["SHOW_jre_vendor"]
                         ) { obj: JsonElement -> obj.asBoolean }
                         ENABLE_MULTILINE.read(
                             root["enable_multiline"]
@@ -78,6 +80,12 @@ object ModConfig {
                         TEXT_SHADOW.read(
                             root["text_shadow"]
                         ) { obj: JsonElement -> obj.asBoolean }
+                        TEXT_COLOR.read(
+                            root["text_color"]
+                        ) { obj: JsonElement -> obj.asInt }
+                        SHOW_DEVICE_CPU.read(
+                            root["show_device_cpu"]
+                        ) {obj: JsonElement -> obj.asBoolean}
                     }
                 }
             }
@@ -92,21 +100,23 @@ object ModConfig {
         try {
             // Create JSON object.
             val root = JsonObject()
-            val hraddonsObject = JsonObject()
-            hraddonsObject.addProperty(ENABLE_SYSTEM_TIME.name(), ENABLE_SYSTEM_TIME.value())
-            hraddonsObject.addProperty(ENABLE_CLIENT_VERSION.name(), ENABLE_CLIENT_VERSION.value())
-            hraddonsObject.addProperty(ENABLE_PC_SPECS.name(), ENABLE_PC_SPECS.value())
-            hraddonsObject.addProperty(HIDE_JRE_ARCHITECTURE.name(), HIDE_JRE_ARCHITECTURE.value())
-            hraddonsObject.addProperty(HIDE_JRE_VENDOR.name(), HIDE_JRE_VENDOR.value())
-            hraddonsObject.addProperty(ENABLE_MULTILINE.name(), ENABLE_MULTILINE.value())
-            hraddonsObject.addProperty(FLIP_DATE_AND_TIME.name(), FLIP_DATE_AND_TIME.value())
-            hraddonsObject.addProperty(DATE_AND_TIME_FORMATTING.name(), DATE_AND_TIME_FORMATTING.value())
-            hraddonsObject.addProperty(DATE_FORMATTING.name(), DATE_FORMATTING.value())
-            hraddonsObject.addProperty(TIME_FORMATTING.name(), TIME_FORMATTING.value())
-            hraddonsObject.addProperty(HUD_HSTACK_PADDING.name(), HUD_HSTACK_PADDING.value())
-            hraddonsObject.addProperty(HUD_VSTACK_PADDING.name(), HUD_VSTACK_PADDING.value())
-            hraddonsObject.addProperty(TEXT_SHADOW.name(), TEXT_SHADOW.value())
-            root.add("syshud", hraddonsObject)
+            val shudObj = JsonObject()
+            shudObj.addProperty(ENABLE_SYSTEM_TIME.name(), ENABLE_SYSTEM_TIME.value())
+            shudObj.addProperty(ENABLE_CLIENT_VERSION.name(), ENABLE_CLIENT_VERSION.value())
+            shudObj.addProperty(ENABLE_PC_SPECS.name(), ENABLE_PC_SPECS.value())
+            shudObj.addProperty(SHOW_JRE_ARCHITECTURE.name(), SHOW_JRE_ARCHITECTURE.value())
+            shudObj.addProperty(SHOW_JRE_VENDOR.name(), SHOW_JRE_VENDOR.value())
+            shudObj.addProperty(ENABLE_MULTILINE.name(), ENABLE_MULTILINE.value())
+            shudObj.addProperty(FLIP_DATE_AND_TIME.name(), FLIP_DATE_AND_TIME.value())
+            shudObj.addProperty(DATE_AND_TIME_FORMATTING.name(), DATE_AND_TIME_FORMATTING.value())
+            shudObj.addProperty(DATE_FORMATTING.name(), DATE_FORMATTING.value())
+            shudObj.addProperty(TIME_FORMATTING.name(), TIME_FORMATTING.value())
+            shudObj.addProperty(HUD_HSTACK_PADDING.name(), HUD_HSTACK_PADDING.value())
+            shudObj.addProperty(HUD_VSTACK_PADDING.name(), HUD_VSTACK_PADDING.value())
+            shudObj.addProperty(TEXT_SHADOW.name(), TEXT_SHADOW.value())
+            shudObj.addProperty(TEXT_COLOR.name(), TEXT_COLOR.value())
+            shudObj.addProperty(SHOW_DEVICE_CPU.name(), SHOW_DEVICE_CPU.value())
+            root.add("syshud", shudObj)
 
             // Write to file.
             KFileUtils.writeJsonToFile("config.json", root, gson)
@@ -116,30 +126,26 @@ object ModConfig {
         }
     }
 
-    class Value<T>(private val name: String, private var value: T) {
-        private val defaultValue: T
-
-        init {
-            defaultValue = value
-        }
+    class Value<ValueType>(private val name: String, private var value: ValueType) {
+        private val defaultValue: ValueType = value
 
         fun name(): String {
             return name
         }
 
-        fun value(): T {
+        fun value(): ValueType {
             return value
         }
 
-        fun defaultValue(): T {
+        fun defaultValue(): ValueType {
             return defaultValue
         }
 
-        fun setValue(value: T) {
+        fun setValue(value: ValueType) {
             this.value = value
         }
 
-        fun <V> read(element: V, elementToValue: Function<V, T>) {
+        fun <V> read(element: V, elementToValue: Function<V, ValueType>) {
             try {
                 setValue(elementToValue.apply(element))
             } catch (exception: Exception) {

@@ -49,6 +49,8 @@ object ModConfigScreen {
         addIntEntry(customization, builder, ModConfig.HUD_VSTACK_PADDING, 0, 20)
         addBooleanEntry(customization, builder, ModConfig.TEXT_SHADOW)
 
+        addColorEntry(experimental, builder, ModConfig.TEXT_COLOR)
+
         return builder
     }
 
@@ -58,9 +60,8 @@ object ModConfigScreen {
     ) {
         category.addEntry(
             builder.entryBuilder()
-                .startStrField(Text.translatable("syshud.configs." + value.name() + ".label"), value.value())
+                .startStrField(Text.translatable("syshud.configs.${value.name()}.label"), value.value())
                 .setDefaultValue(value.defaultValue())
-                .setTooltip(Text.translatable("syshud.configs." + value.name() + ".description"))
                 .setSaveConsumer(value::setValue)
                 .build()
         )
@@ -72,9 +73,8 @@ object ModConfigScreen {
     ) {
         category.addEntry(
             builder.entryBuilder()
-                .startBooleanToggle(Text.translatable("syshud.configs." + value.name() + ".label"), value.value())
+                .startBooleanToggle(Text.translatable("syshud.configs.${value.name()}.label"), value.value())
                 .setDefaultValue(value.defaultValue())
-                .setTooltip(Text.translatable("syshud.configs." + value.name() + ".description"))
                 .setSaveConsumer(value::setValue)
                 .build()
         )
@@ -87,13 +87,26 @@ object ModConfigScreen {
         category.addEntry(
             builder.entryBuilder()
                 .startIntSlider(
-                    Text.translatable("syshud.configs." + value.name() + ".label"),
+                    Text.translatable("syshud.configs.${value.name()}.label"),
                     value.value(),
                     min,
                     max
                 )
                 .setDefaultValue(value.defaultValue())
-                .setTooltip(Text.translatable("syshud.configs." + value.name() + ".description"))
+                .setSaveConsumer(value::setValue)
+                .build()
+        )
+    }
+
+    private fun addColorEntry(
+        category: ConfigCategory, builder: ConfigBuilder, value: ModConfig.Value<Int>
+    ) {
+        category.addEntry(
+            builder.entryBuilder()
+                .startAlphaColorField(
+                    Text.translatable("syshud.configs.${value.name()}.label"),
+                    value.value()
+                ).setDefaultValue(value.defaultValue())
                 .setSaveConsumer(value::setValue)
                 .build()
         )
@@ -108,7 +121,7 @@ object ModConfigScreen {
     ) {
         category.addEntry(
             builder.entryBuilder()
-                .startStrField(Text.translatable("syshud.configs." + value.name() + ".label"), value.value())
+                .startStrField(Text.translatable("syshud.configs.${value.name()}.label"), value.value())
                 .setDefaultValue(value.defaultValue())
                 .setTooltip(Text.literal(ConfigLiteral.Tooltips.date_format_warn))
                 .setSaveConsumer(value::setValue)

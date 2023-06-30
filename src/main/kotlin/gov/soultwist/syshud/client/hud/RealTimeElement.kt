@@ -45,7 +45,7 @@ object RealTimeElement : HudRenderCallback {
                             dr,
                             HUDConstraints.hstack.leading(),
                             HUDConstraints.vstack.top(),
-                            Colors.WHITE,
+                            ModConfig.TEXT_COLOR.value(),
                             ts
 
                         )
@@ -62,7 +62,7 @@ object RealTimeElement : HudRenderCallback {
                                 if (ModConfig.FLIP_DATE_AND_TIME.value()){
                                     HUDConstraints.vstack.top() + n
                                 } else { HUDConstraints.vstack.top() },
-                                Colors.WHITE,
+                                ModConfig.TEXT_COLOR.value(),
                                 ts
                             )
                             drawContext?.drawText(
@@ -74,7 +74,7 @@ object RealTimeElement : HudRenderCallback {
                                     HUDConstraints.vstack.top() + i
                                      },
 
-                                Colors.WHITE,
+                                ModConfig.TEXT_COLOR.value(),
                                 ts
                             )
 

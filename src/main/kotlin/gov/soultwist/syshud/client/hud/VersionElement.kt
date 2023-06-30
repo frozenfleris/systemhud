@@ -23,7 +23,7 @@ object VersionElement: HudRenderCallback {
                 mcVers,
                 HUDConstraints.hstack.trailing(mcVers),
                 HUDConstraints.vstack.bottom(),
-                Colors.WHITE,
+                ModConfig.TEXT_COLOR.value(),
                 ts
             )
 

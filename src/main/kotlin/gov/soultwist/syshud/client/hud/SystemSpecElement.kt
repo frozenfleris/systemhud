@@ -42,7 +42,7 @@ object SystemSpecElement : HudRenderCallback {
                     os,
                     HUDConstraints.hstack.leading(),
                     HUDConstraints.vstack.bottom(),
-                    Colors.WHITE,
+                    ModConfig.TEXT_COLOR.value(),
                     ts
                 )
 
@@ -51,7 +51,7 @@ object SystemSpecElement : HudRenderCallback {
                     newJVer,
                     HUDConstraints.hstack.leading(),
                     HUDConstraints.vstack.bottom() - i,
-                    Colors.WHITE,
+                    ModConfig.TEXT_COLOR.value(),
                     ts
                 )
 
@@ -61,7 +61,7 @@ object SystemSpecElement : HudRenderCallback {
                             jVendor,
                             HUDConstraints.hstack.leading(),
                             HUDConstraints.vstack.bottom() - i1,
-                            Colors.WHITE,
+                            ModConfig.TEXT_COLOR.value(),
                             ts
                         )
                     }

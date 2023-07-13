@@ -45,6 +45,7 @@ object ModConfigScreen {
             addStringEntry(customization, builder, ModConfig.TIME_FORMATTING)
             addBooleanEntry(customization, builder, ModConfig.FLIP_DATE_AND_TIME)
         }
+        addBooleanEntry(customization, builder, ModConfig.FLIP_VERSION_AND_SYSTEM)
         addIntEntry(customization, builder, ModConfig.HUD_HSTACK_PADDING, 0, 20)
         addIntEntry(customization, builder, ModConfig.HUD_VSTACK_PADDING, 0, 20)
         addBooleanEntry(customization, builder, ModConfig.TEXT_SHADOW)

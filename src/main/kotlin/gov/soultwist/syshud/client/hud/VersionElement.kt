@@ -21,7 +21,13 @@ object VersionElement: HudRenderCallback {
             drawContext.drawText(
                 versionRenderer,
                 mcVers,
-                HUDConstraints.hstack.trailing(mcVers),
+                if (!ModConfig.FLIP_VERSION_AND_SYSTEM.value())
+                {
+                    HUDConstraints.hstack.trailing(mcVers)
+                }
+                else {
+                    HUDConstraints.hstack.leading()
+                     },
                 HUDConstraints.vstack.bottom(),
                 ModConfig.TEXT_COLOR.value(),
                 ts

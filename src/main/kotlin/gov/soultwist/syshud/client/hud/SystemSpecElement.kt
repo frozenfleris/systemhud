@@ -40,7 +40,14 @@ object SystemSpecElement : HudRenderCallback {
                 drawContext?.drawText(
                     sysRender,
                     os,
-                    HUDConstraints.hstack.leading(),
+                    if (
+                        !ModConfig.FLIP_VERSION_AND_SYSTEM.value()
+                    )
+                    {
+                        HUDConstraints.hstack.leading()
+                    } else {
+                        HUDConstraints.hstack.trailing(os)
+                    },
                     HUDConstraints.vstack.bottom(),
                     ModConfig.TEXT_COLOR.value(),
                     ts
@@ -49,7 +56,14 @@ object SystemSpecElement : HudRenderCallback {
                 drawContext?.drawText(
                     sysRender,
                     newJVer,
-                    HUDConstraints.hstack.leading(),
+                    if (
+                        !ModConfig.FLIP_VERSION_AND_SYSTEM.value()
+                        )
+                    {
+                        HUDConstraints.hstack.leading()
+                    } else {
+                           HUDConstraints.hstack.trailing(newJVer)
+                           },
                     HUDConstraints.vstack.bottom() - i,
                     ModConfig.TEXT_COLOR.value(),
                     ts
@@ -59,7 +73,14 @@ object SystemSpecElement : HudRenderCallback {
                         drawContext?.drawText(
                             sysRender,
                             jVendor,
-                            HUDConstraints.hstack.leading(),
+                            if (
+                                !ModConfig.FLIP_VERSION_AND_SYSTEM.value()
+                            )
+                            {
+                                HUDConstraints.hstack.leading()
+                            } else {
+                                HUDConstraints.hstack.trailing(jVendor)
+                            },
                             HUDConstraints.vstack.bottom() - i1,
                             ModConfig.TEXT_COLOR.value(),
                             ts

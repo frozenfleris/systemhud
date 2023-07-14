@@ -1,4 +1,5 @@
 {
+  "menu.config": "SysHud Options",
   "syshud.advanced_hud_title": "HUD Customization",
   "syshud.config_title": "General",
   "syshud.configs.date_and_time_formatting.label": "System Date & Time Formatting",
@@ -7,7 +8,8 @@
   "syshud.configs.enable_multiline.label": "Separate Date and Time on New Lines",
   "syshud.configs.enable_pc_specs.label": "Show PC Specs",
   "syshud.configs.flip_date_and_time.label": "Flip Date and Time",
-  "syshud.configs.flip_version_and_system": "Flip Version and System",
+  "syshud.configs.flip_version_and_system.label": "Flip Version and System",
+  "syshud.configs.show_device_cpu.label": "Show Device CPU",
   "syshud.configs.show_jre_arch.label": "Show JRE Architecture",
   "syshud.configs.show_jre_vendor.label": "Show JRE Vendor",
   "syshud.configs.show_version.label": "Show MC Version",

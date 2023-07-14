@@ -3,13 +3,13 @@
 	"id": "syshud",
 	"version": "${version}",
 	"name": "SystemHUD",
-	"description": "Show system date and time, java version, OS and Minecraft Client Version",
+	"description": "Show system date and time, system details and Minecraft Client Version",
 	"authors": [
 		"SoultwistRune"
 	],
 	"contact": {
 		"homepage": "",
-		"sources": "https://github.com/frozenfleris/systemhud"
+		"sources": "https://github.com/soultwistrune/systemhud"
 	},
 	"license": "MIT",
 	"icon": "assets/syshud/icon.png",
@@ -29,20 +29,18 @@
 		]
 	},
 	"mixins": [
+		"syshud.mixins.json"
 	],
 	"recommends": {
-		"java": ">=20"
+		"java": ">=20",
+		"modmenu": ">=7.1.0"
 	},
 	"depends": {
 		"fabricloader": ">=0.14.21",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*",
-		"modmenu": ">=7.1.0",
 		"cloth-config": ">=11.0.99",
 		"fabric-language-kotlin": ">=1.8.22"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }

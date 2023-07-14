@@ -11,16 +11,16 @@ import org.slf4j.LoggerFactory
 object SyshudMain : ClientModInitializer {
     private val logger = LoggerFactory.getLogger("syshud")
 
-	override fun onInitializeClient() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
-		logger.info("Kotlin Mod SystemHUD (id: syshud) loaded")
-		val hrc = HudRenderCallback.EVENT
+    override fun onInitializeClient() {
+        // This code runs as soon as Minecraft is in a mod-load-ready state.
+        // However, some things (like resources) may still be uninitialized.
+        // Proceed with mild caution.
+        logger.info("Kotlin Mod SystemHUD (id: syshud) loaded")
+        val hrc = HudRenderCallback.EVENT
 
-		hrc.register(RealTimeElement)
-		hrc.register(SystemSpecElement)
-		hrc.register(VersionElement)
-		ModConfig.loadFromFile()
-	}
+        hrc.register(RealTimeElement)
+        hrc.register(SystemSpecElement)
+        hrc.register(VersionElement)
+        ModConfig.loadFromFile()
+    }
 }

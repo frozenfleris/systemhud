@@ -27,8 +27,8 @@ object ModConfig {
     val HUD_VSTACK_PADDING = Value("time_vertical_padding", 2)
     val TEXT_SHADOW = Value("text_shadow", true)
     val SHOW_DEVICE_CPU = Value("show_device_cpu", false)
-    val FLIP_VERSION_AND_SYSTEM = Value("flip_version_and_java", false)
-    val TEXT_COLOR = Value("text_color", -1) //-1873784752
+    val FLIP_VERSION_AND_SYSTEM = Value("flip_version_and_system", false)
+    val TEXT_COLOR = Value("text_color", -1)
     fun loadFromFile() {
         val configFile: File = File(KFileUtils.configDirectory, "config.json")
         try {
@@ -62,7 +62,7 @@ object ModConfig {
                         ) { obj: JsonElement -> obj.asBoolean }
                         FLIP_DATE_AND_TIME.read(
                             root["flip_date_and_time"]
-                        ) {obj: JsonElement -> obj.asBoolean }
+                        ) { obj: JsonElement -> obj.asBoolean }
                         DATE_AND_TIME_FORMATTING.read(
                             root["date_and_time_formatting"]
                         ) { obj: JsonElement -> obj.asString }
@@ -86,10 +86,10 @@ object ModConfig {
                         ) { obj: JsonElement -> obj.asInt }
                         SHOW_DEVICE_CPU.read(
                             root["show_device_cpu"]
-                        ) {obj: JsonElement -> obj.asBoolean}
+                        ) { obj: JsonElement -> obj.asBoolean }
                         FLIP_VERSION_AND_SYSTEM.read(
                             root["flip_version_and_system"]
-                        ) {obj: JsonElement -> obj.asBoolean}
+                        ) { obj: JsonElement -> obj.asBoolean }
                     }
                 }
             }

@@ -4,11 +4,8 @@ import gov.soultwist.syshud.client.hud.backend.ConfigLiteral
 import gov.soultwist.syshud.util.ModConfig
 import me.shedaniel.clothconfig2.api.ConfigBuilder
 import me.shedaniel.clothconfig2.api.ConfigCategory
-import me.shedaniel.clothconfig2.gui.entries.DropdownBoxEntry
-import me.shedaniel.clothconfig2.impl.builders.DropdownMenuBuilder
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.text.Text
-import net.minecraft.util.Colors
 
 object ModConfigScreen {
     fun getConfigScreen(parent: Screen?): ConfigBuilder {
@@ -23,9 +20,11 @@ object ModConfigScreen {
         //Catagories
         val general = builder.getOrCreateCategory(Text.translatable("syshud.config_title"))
         val customization = builder.getOrCreateCategory(Text.translatable("syshud.advanced_hud_title"))
-        val experimental = builder.getOrCreateCategory(Text.translatable(
-            "syshud.experimental_config_title"
-        ))
+        val experimental = builder.getOrCreateCategory(
+            Text.translatable(
+                "syshud.experimental_title"
+            )
+        )
 
         //Entries by Category
         //General

@@ -22,7 +22,7 @@ interface HUDParams {
     interface getSystemSpecs {
         companion object {
             val OS = " ${TranslatorHelper.oscheck()} ${System.getProperty("os.version")}"
-            val OS_WITH_CPU ="$OS (${GlDebugInfo.getCpuInfo()})"
+            val OS_WITH_CPU = "$OS (${GlDebugInfo.getCpuInfo()})"
         }
     }
 }

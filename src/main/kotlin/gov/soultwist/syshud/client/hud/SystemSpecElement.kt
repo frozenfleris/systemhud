@@ -6,7 +6,6 @@ import gov.soultwist.syshud.util.ModConfig
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
-import net.minecraft.util.Colors
 
 object SystemSpecElement : HudRenderCallback {
     override fun onHudRender(drawContext: DrawContext?, tickDelta: Float) {
@@ -42,8 +41,7 @@ object SystemSpecElement : HudRenderCallback {
                     os,
                     if (
                         !ModConfig.FLIP_VERSION_AND_SYSTEM.value()
-                    )
-                    {
+                    ) {
                         HUDConstraints.hstack.leading()
                     } else {
                         HUDConstraints.hstack.trailing(os)
@@ -58,34 +56,32 @@ object SystemSpecElement : HudRenderCallback {
                     newJVer,
                     if (
                         !ModConfig.FLIP_VERSION_AND_SYSTEM.value()
-                        )
-                    {
+                    ) {
                         HUDConstraints.hstack.leading()
                     } else {
-                           HUDConstraints.hstack.trailing(newJVer)
-                           },
+                        HUDConstraints.hstack.trailing(newJVer)
+                    },
                     HUDConstraints.vstack.bottom() - i,
                     ModConfig.TEXT_COLOR.value(),
                     ts
                 )
 
-                    if (ModConfig.SHOW_JRE_VENDOR.value()) {
-                        drawContext?.drawText(
-                            sysRender,
-                            jVendor,
-                            if (
-                                !ModConfig.FLIP_VERSION_AND_SYSTEM.value()
-                            )
-                            {
-                                HUDConstraints.hstack.leading()
-                            } else {
-                                HUDConstraints.hstack.trailing(jVendor)
-                            },
-                            HUDConstraints.vstack.bottom() - i1,
-                            ModConfig.TEXT_COLOR.value(),
-                            ts
-                        )
-                    }
+                if (ModConfig.SHOW_JRE_VENDOR.value()) {
+                    drawContext?.drawText(
+                        sysRender,
+                        jVendor,
+                        if (
+                            !ModConfig.FLIP_VERSION_AND_SYSTEM.value()
+                        ) {
+                            HUDConstraints.hstack.leading()
+                        } else {
+                            HUDConstraints.hstack.trailing(jVendor)
+                        },
+                        HUDConstraints.vstack.bottom() - i1,
+                        ModConfig.TEXT_COLOR.value(),
+                        ts
+                    )
+                }
             }
         }
     }

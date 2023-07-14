@@ -7,6 +7,7 @@ interface HUDConstraints {
     companion object {
         val client = MinecraftClient.getInstance()
     }
+
     /**
     vstack (Vertical Stack) constrains the element at either the top or the bottom of the screen.
      * @since SwiftUI for macOS: iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0
@@ -20,18 +21,19 @@ interface HUDConstraints {
              * Sets the text element at the top of the screen
              * @return assigned parameter (defaults to 2)
              */
-                fun top() : Int {
-                    return ModConfig.HUD_VSTACK_PADDING.value()
-                }
+            fun top(): Int {
+                return ModConfig.HUD_VSTACK_PADDING.value()
+            }
+
             /**
              * Sets the text element at the bottom of the screen
              * @return scaled height - font height of textRenderer minus bottom (Int: defaults to 2)
-            */
-                fun bottom() : Int {
-                    return client.window.scaledHeight - client.textRenderer.fontHeight - ModConfig.HUD_VSTACK_PADDING.value()
-                }
+             */
+            fun bottom(): Int {
+                return client.window.scaledHeight - client.textRenderer.fontHeight - ModConfig.HUD_VSTACK_PADDING.value()
             }
         }
+    }
 
     /**
      * hstack (Horizontal Stack) constrains the element at either the left or the right side of the screen.
@@ -50,6 +52,7 @@ interface HUDConstraints {
             fun leading(): Int {
                 return ModConfig.HUD_HSTACK_PADDING.value()
             }
+
             /**
              * Sets the text element at the right edge of the screen
              * @return scaled width - width of text input minus trailing (Int, defaults to 2)

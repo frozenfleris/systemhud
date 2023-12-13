@@ -29,7 +29,7 @@ object RealTimeElement : HudRenderCallback {
 
 
         if (ModConfig.ENABLE_SYSTEM_TIME.value()) {
-            if (!client.options.debugEnabled) {
+            if (!client.inGameHud.debugHud.shouldShowDebugHud()) {
                 val dualRenderer = client.textRenderer
                 val dateRenderer = client.textRenderer
                 val timeRenderer = client.textRenderer

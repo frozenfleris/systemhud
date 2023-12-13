@@ -22,6 +22,7 @@ object ModConfig {
     val FLIP_DATE_AND_TIME = Value("flip_date_and_time", false)
     val DATE_AND_TIME_FORMATTING = Value("date_and_time_formatting", "yyyy-MM-dd hh:mm a")
     val DATE_FORMATTING = Value("date_formatting", "yyyy-MM-dd")
+    // val HIDE_EXPERIMENTAL_WARNING = Value("remove_experimental_screen", true)
     val TIME_FORMATTING = Value("time_formatting", "hh:mm a")
     val HUD_HSTACK_PADDING = Value("time_horizontal_padding", 2)
     val HUD_VSTACK_PADDING = Value("time_vertical_padding", 2)
@@ -52,10 +53,10 @@ object ModConfig {
                             root["enable_pc_specs"]
                         ) { obj: JsonElement -> obj.asBoolean }
                         SHOW_JRE_ARCHITECTURE.read(
-                            root["SHOW_jre_arch"]
+                            root["show_jre_arch"]
                         ) { obj: JsonElement -> obj.asBoolean }
                         SHOW_JRE_VENDOR.read(
-                            root["SHOW_jre_vendor"]
+                            root["show_jre_vendor"]
                         ) { obj: JsonElement -> obj.asBoolean }
                         ENABLE_MULTILINE.read(
                             root["enable_multiline"]
@@ -69,6 +70,11 @@ object ModConfig {
                         DATE_FORMATTING.read(
                             root["date_formatting"]
                         ) { obj: JsonElement -> obj.asString }
+                        /*
+                        HIDE_EXPERIMENTAL_WARNING.read(
+                                root["remove_experimental_screen"]
+                        ) { obj: JsonElement -> obj.asBoolean }
+                        */
                         TIME_FORMATTING.read(
                             root["time_formatting"]
                         ) { obj: JsonElement -> obj.asString }
@@ -114,6 +120,7 @@ object ModConfig {
             shudObj.addProperty(FLIP_DATE_AND_TIME.name(), FLIP_DATE_AND_TIME.value())
             shudObj.addProperty(DATE_AND_TIME_FORMATTING.name(), DATE_AND_TIME_FORMATTING.value())
             shudObj.addProperty(DATE_FORMATTING.name(), DATE_FORMATTING.value())
+            //shudObj.addProperty(HIDE_EXPERIMENTAL_WARNING.name(), HIDE_EXPERIMENTAL_WARNING.value())
             shudObj.addProperty(TIME_FORMATTING.name(), TIME_FORMATTING.value())
             shudObj.addProperty(HUD_HSTACK_PADDING.name(), HUD_HSTACK_PADDING.value())
             shudObj.addProperty(HUD_VSTACK_PADDING.name(), HUD_VSTACK_PADDING.value())

@@ -50,6 +50,7 @@ object ModConfigScreen {
         addBooleanEntry(customization, builder, ModConfig.TEXT_SHADOW)
 
         addColorEntry(experimental, builder, ModConfig.TEXT_COLOR)
+        //addBooleanEntry(experimental, builder, ModConfig.HIDE_EXPERIMENTAL_WARNING)
 
         return builder
     }

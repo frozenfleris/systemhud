@@ -32,7 +32,7 @@ object SystemSpecElement : HudRenderCallback {
         }
 
         if (ModConfig.ENABLE_PC_SPECS.value()) {
-            if (!client.options.debugEnabled) {
+            if (!client.inGameHud.debugHud.shouldShowDebugHud()) {
                 val sysRender = client.textRenderer
                 val i = 9
                 val i1 = 19

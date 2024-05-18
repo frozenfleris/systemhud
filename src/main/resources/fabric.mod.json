@@ -5,7 +5,7 @@
 	"name": "SystemHUD",
 	"description": "Show system date and time, system details and Minecraft Client Version",
 	"authors": [
-		"SoultwistRune"
+		"GlacialVitality"
 	],
 	"contact": {
 		"homepage": "",
@@ -17,13 +17,13 @@
 	"entrypoints": {
 		"client": [
 			{
-				"value": "gov.soultwist.syshud.SyshudMain",
+				"value": "gov.vitality.syshud.SyshudMain",
 				"adapter": "kotlin"
 			}
 		],
 		"modmenu": [
 			{
-				"value": "gov.soultwist.syshud.api.MenuEvent",
+				"value": "gov.vitality.syshud.api.MenuEvent",
 				"adapter": "kotlin"
 			}
 		]
@@ -32,15 +32,15 @@
 		"syshud.mixins.json"
 	],
 	"recommends": {
-		"java": ">=20",
+		"java": ">=22",
 		"modmenu": ">=7.1.0"
 	},
 	"depends": {
 		"fabricloader": ">=0.14.21",
-		"minecraft": "~1.20.1",
-		"java": ">=17",
+		"minecraft": "~1.20.6",
+		"java": ">=21",
 		"fabric-api": "*",
-		"cloth-config": ">=11.0.99",
-		"fabric-language-kotlin": ">=1.8.22"
+		"cloth-config": ">=13.0.114",
+		"fabric-language-kotlin": ">=1.9.23"
 	}
 }

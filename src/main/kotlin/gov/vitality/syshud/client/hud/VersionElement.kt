@@ -1,8 +1,8 @@
-package gov.soultwist.syshud.client.hud
+package gov.vitality.syshud.client.hud
 
-import gov.soultwist.syshud.client.hud.backend.HUDConstraints
-import gov.soultwist.syshud.client.hud.backend.HUDParams
-import gov.soultwist.syshud.util.ModConfig
+import gov.vitality.syshud.client.hud.backend.HUDConstraints
+import gov.vitality.syshud.client.hud.backend.HUDParams
+import gov.vitality.syshud.util.ModConfig
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext

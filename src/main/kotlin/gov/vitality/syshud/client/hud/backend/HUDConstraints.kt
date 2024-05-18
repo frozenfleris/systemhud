@@ -1,6 +1,6 @@
-package gov.soultwist.syshud.client.hud.backend
+package gov.vitality.syshud.client.hud.backend
 
-import gov.soultwist.syshud.util.ModConfig
+import gov.vitality.syshud.util.ModConfig
 import net.minecraft.client.MinecraftClient
 
 interface HUDConstraints {

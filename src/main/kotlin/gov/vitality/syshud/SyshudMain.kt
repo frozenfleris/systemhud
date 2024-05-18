@@ -1,9 +1,9 @@
-package gov.soultwist.syshud
+package gov.vitality.syshud
 
-import gov.soultwist.syshud.client.hud.RealTimeElement
-import gov.soultwist.syshud.client.hud.SystemSpecElement
-import gov.soultwist.syshud.client.hud.VersionElement
-import gov.soultwist.syshud.util.ModConfig
+import gov.vitality.syshud.client.hud.RealTimeElement
+import gov.vitality.syshud.client.hud.SystemSpecElement
+import gov.vitality.syshud.client.hud.VersionElement
+import gov.vitality.syshud.util.ModConfig
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import org.slf4j.LoggerFactory

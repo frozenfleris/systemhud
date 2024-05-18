@@ -1,7 +1,7 @@
 {
 	"required": true,
-	"package": "gov.soultwist.syshud.mixin",
-	"compatibilityLevel": "JAVA_17",
+	"package": "gov.vitality.syshud.mixin",
+	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 	],
 	"injectors": {

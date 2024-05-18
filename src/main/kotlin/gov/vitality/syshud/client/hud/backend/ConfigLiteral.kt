@@ -1,4 +1,4 @@
-package gov.soultwist.syshud.client.hud.backend
+package gov.vitality.syshud.client.hud.backend
 
 interface ConfigLiteral {
     interface Tooltips {

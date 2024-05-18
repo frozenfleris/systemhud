@@ -1,4 +1,4 @@
-package gov.soultwist.syshud.util
+package gov.vitality.syshud.util
 
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
@@ -29,6 +29,8 @@ object ModConfig {
     val TEXT_SHADOW = Value("text_shadow", true)
     val SHOW_DEVICE_CPU = Value("show_device_cpu", false)
     val FLIP_VERSION_AND_SYSTEM = Value("flip_version_and_system", false)
+    val INVERT_VERTICAL_DATE_TIME = Value("invert_vertically_date_and_time", false)
+    val INVERT_HORIZONTAL_DATE_TIME = Value("invert_horizontally_date_and_time", false)
     val TEXT_COLOR = Value("text_color", -1)
     fun loadFromFile() {
         val configFile: File = File(KFileUtils.configDirectory, "config.json")
@@ -96,6 +98,12 @@ object ModConfig {
                         FLIP_VERSION_AND_SYSTEM.read(
                             root["flip_version_and_system"]
                         ) { obj: JsonElement -> obj.asBoolean }
+                        INVERT_VERTICAL_DATE_TIME.read(
+                            root["invert_vertically_date_and_time"]
+                        ) { obj: JsonElement -> obj.asBoolean }
+                        INVERT_HORIZONTAL_DATE_TIME.read(
+                            root["invert_horizontally_date_and_time"]
+                        ) { obj: JsonElement -> obj.asBoolean }
                     }
                 }
             }
@@ -128,6 +136,8 @@ object ModConfig {
             shudObj.addProperty(TEXT_COLOR.name(), TEXT_COLOR.value())
             shudObj.addProperty(SHOW_DEVICE_CPU.name(), SHOW_DEVICE_CPU.value())
             shudObj.addProperty(FLIP_VERSION_AND_SYSTEM.name(), FLIP_VERSION_AND_SYSTEM.value())
+            shudObj.addProperty(INVERT_VERTICAL_DATE_TIME.name(), INVERT_VERTICAL_DATE_TIME.value())
+            shudObj.addProperty(INVERT_HORIZONTAL_DATE_TIME.name(), INVERT_HORIZONTAL_DATE_TIME.value())
             root.add("syshud", shudObj)
 
             // Write to file.

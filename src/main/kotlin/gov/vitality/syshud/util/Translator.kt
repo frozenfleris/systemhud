@@ -1,4 +1,4 @@
-package gov.soultwist.syshud.util
+package gov.vitality.syshud.util
 
 internal interface TranslatorHelper {
     companion object {

@@ -1,7 +1,7 @@
-package gov.soultwist.syshud.client.screen
+package gov.vitality.syshud.client.screen
 
-import gov.soultwist.syshud.client.hud.backend.ConfigLiteral
-import gov.soultwist.syshud.util.ModConfig
+import gov.vitality.syshud.client.hud.backend.ConfigLiteral
+import gov.vitality.syshud.util.ModConfig
 import me.shedaniel.clothconfig2.api.ConfigBuilder
 import me.shedaniel.clothconfig2.api.ConfigCategory
 import net.minecraft.client.gui.screen.Screen
@@ -49,7 +49,10 @@ object ModConfigScreen {
         addIntEntry(customization, builder, ModConfig.HUD_VSTACK_PADDING, 0, 20)
         addBooleanEntry(customization, builder, ModConfig.TEXT_SHADOW)
 
+        addBooleanEntry(experimental, builder, ModConfig.INVERT_VERTICAL_DATE_TIME)
+        addBooleanEntry(experimental, builder, ModConfig.INVERT_HORIZONTAL_DATE_TIME)
         addColorEntry(experimental, builder, ModConfig.TEXT_COLOR)
+
         //addBooleanEntry(experimental, builder, ModConfig.HIDE_EXPERIMENTAL_WARNING)
 
         return builder

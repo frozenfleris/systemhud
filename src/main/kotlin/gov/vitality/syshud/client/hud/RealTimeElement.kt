@@ -1,7 +1,7 @@
-package gov.soultwist.syshud.client.hud
+package gov.vitality.syshud.client.hud
 
-import gov.soultwist.syshud.client.hud.backend.HUDConstraints
-import gov.soultwist.syshud.util.ModConfig
+import gov.vitality.syshud.client.hud.backend.HUDConstraints
+import gov.vitality.syshud.util.ModConfig
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
@@ -10,6 +10,23 @@ import java.time.Instant
 import java.util.*
 
 object RealTimeElement : HudRenderCallback {
+
+    private fun determineVerticalByConfig(modifier : Int = 0) : Int{
+        return if (ModConfig.INVERT_VERTICAL_DATE_TIME.value()) {
+            HUDConstraints.vstack.bottom() - modifier
+        } else {
+            HUDConstraints.vstack.top() + modifier
+        }
+    }
+
+    private fun determineHorizontalByConfig(trailingText : String, modifier : Int = 0) : Int{
+        return if (ModConfig.INVERT_HORIZONTAL_DATE_TIME.value()) {
+            HUDConstraints.hstack.trailing(trailingText) - modifier
+        } else {
+            HUDConstraints.hstack.leading() + modifier
+        }
+    }
+
     override fun onHudRender(drawContext: DrawContext?, tickDelta: Float) {
 
 
@@ -38,8 +55,8 @@ object RealTimeElement : HudRenderCallback {
                     drawContext?.drawText(
                         dualRenderer,
                         dr,
-                        HUDConstraints.hstack.leading(),
-                        HUDConstraints.vstack.top(),
+                        determineHorizontalByConfig(dr),
+                        determineVerticalByConfig(),
                         ModConfig.TEXT_COLOR.value(),
                         ts
 
@@ -51,11 +68,11 @@ object RealTimeElement : HudRenderCallback {
                     drawContext?.drawText(
                         dateRenderer,
                         dt,
-                        HUDConstraints.hstack.leading(),
+                        determineHorizontalByConfig(dt),
                         if (ModConfig.FLIP_DATE_AND_TIME.value()) {
-                            HUDConstraints.vstack.top() + n
+                            determineVerticalByConfig(n)
                         } else {
-                            HUDConstraints.vstack.top()
+                            determineVerticalByConfig()
                         },
                         ModConfig.TEXT_COLOR.value(),
                         ts
@@ -63,11 +80,11 @@ object RealTimeElement : HudRenderCallback {
                     drawContext?.drawText(
                         timeRenderer,
                         ti,
-                        HUDConstraints.hstack.leading(),
+                        determineHorizontalByConfig(ti),
                         if (ModConfig.FLIP_DATE_AND_TIME.value()) {
-                            HUDConstraints.vstack.top()
+                            determineVerticalByConfig()
                         } else {
-                            HUDConstraints.vstack.top() + i
+                            determineVerticalByConfig(i)
                         },
 
                         ModConfig.TEXT_COLOR.value(),

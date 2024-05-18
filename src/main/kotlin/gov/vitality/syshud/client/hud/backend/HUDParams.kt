@@ -1,7 +1,7 @@
-package gov.soultwist.syshud.client.hud.backend
+package gov.vitality.syshud.client.hud.backend
 
 import com.mojang.blaze3d.platform.GlDebugInfo
-import gov.soultwist.syshud.util.TranslatorHelper
+import gov.vitality.syshud.util.TranslatorHelper
 import net.minecraft.SharedConstants
 
 interface HUDParams {

@@ -9,6 +9,8 @@
   "syshud.configs.enable_pc_specs.label": "Show PC Specs",
   "syshud.configs.flip_date_and_time.label": "Flip Date and Time",
   "syshud.configs.flip_version_and_system.label": "Flip Version and System",
+  "syshud.configs.invert_horizontally_date_and_time.label": "Invert Date and Time Display along X-Axis",
+  "syshud.configs.invert_vertically_date_and_time.label": "Invert Date and Time Display along Y-Axis",
   "syshud.configs.show_device_cpu.label": "Show Device CPU",
   "syshud.configs.show_jre_arch.label": "Show JRE Architecture",
   "syshud.configs.show_jre_vendor.label": "Show JRE Vendor",

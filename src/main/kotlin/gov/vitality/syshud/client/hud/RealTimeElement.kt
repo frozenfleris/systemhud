@@ -5,6 +5,7 @@ import gov.vitality.syshud.util.ModConfig
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
+import net.minecraft.client.render.RenderTickCounter
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.*
@@ -27,7 +28,7 @@ object RealTimeElement : HudRenderCallback {
         }
     }
 
-    override fun onHudRender(drawContext: DrawContext?, tickDelta: Float) {
+    override fun onHudRender(drawContext: DrawContext?, tickCounter: RenderTickCounter?) {
 
 
         val client = MinecraftClient.getInstance()
@@ -96,6 +97,7 @@ object RealTimeElement : HudRenderCallback {
             }
         }
     }
+
 }
 
 

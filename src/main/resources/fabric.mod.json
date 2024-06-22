@@ -36,11 +36,11 @@
 		"modmenu": ">=7.1.0"
 	},
 	"depends": {
-		"fabricloader": ">=0.14.21",
-		"minecraft": "~1.20.6",
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
 		"java": ">=21",
 		"fabric-api": "*",
-		"cloth-config": ">=13.0.114",
-		"fabric-language-kotlin": ">=1.9.23"
+		"cloth-config": ">=15.0.127",
+		"fabric-language-kotlin": ">=1.11.0"
 	}
 }
